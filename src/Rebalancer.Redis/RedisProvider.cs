@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Caching.Redis;
-using Rebalancer.Core;
+﻿using Rebalancer.Core;
 using Rebalancer.Core.Logging;
 using Rebalancer.Redis.Clients;
 using Rebalancer.Redis.Leases;
@@ -12,9 +11,11 @@ using System.Threading.Tasks;
 
 namespace Rebalancer.Redis
 {
+    /// <summary>
+    /// TODO: implement using redis
+    /// </summary>
     public class RedisProvider : IRebalancerProvider
     {
-        private readonly RedisCache cache;
         private readonly IRebalancerLogger logger;
         private readonly ILeaseService leaseService;
         private readonly IResourceService resourceService;
@@ -22,12 +23,12 @@ namespace Rebalancer.Redis
         private Guid clientId;
         private readonly Coordinator coordinator;
         private readonly Follower follower;
-        private string resourceGroup;
+        private readonly string resourceGroup;
         private static readonly object startLockObj = new object();
-        private bool started;
-        private bool isCoordinator;
+        private readonly bool started;
+        private readonly bool isCoordinator;
         private readonly ResourceGroupStore store;
-        private Task mainTask;
+        private readonly Task mainTask;
 
         public RedisProvider(string connectionString,
             IRebalancerLogger logger = null,
@@ -35,13 +36,6 @@ namespace Rebalancer.Redis
             IResourceService resourceService = null,
             IClientService clientService = null)
         {
-            RedisCacheOptions options = new RedisCacheOptions
-            {
-                Configuration = connectionString,
-                InstanceName = "Rebalancer.Redis"
-            };
-            cache = new RedisCache(options);
-
             if (logger == null)
             {
                 this.logger = new NullRebalancerLogger();

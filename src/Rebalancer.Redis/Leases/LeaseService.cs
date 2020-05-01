@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 
 namespace Rebalancer.Redis.Leases
 {
+    /// <summary>
+    /// TODO: implement using redis
+    /// </summary>
     internal class LeaseService : ILeaseService
     {
         public Task RelinquishLeaseAsync(RelinquishLeaseRequest relinquishLeaseRequest)

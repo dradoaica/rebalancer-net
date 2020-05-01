@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace Rebalancer.Redis.Clients
 {
+    /// <summary>
+    /// TODO: implement using redis
+    /// </summary>
     internal class ClientService : IClientService
     {
         public Task CreateClientAsync(string resourceGroup, Guid clientId)
