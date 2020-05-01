@@ -11,6 +11,7 @@ namespace Rebalancer.Redis.Clients
         }
 
         public Guid ClientId { get; set; }
+        public string ResourceGroup { get; set; }
         public DateTime LastKeepAlive { get; set; }
         public DateTime TimeNow { get; set; }
         public ClientStatus ClientStatus { get; set; }
