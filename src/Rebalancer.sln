@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rebalancer", "Rebalancer\Rebalancer.csproj", "{74B2FC5B-3217-4932-8129-D532162640C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rebalancer.Core", "Rebalancer.Core\Rebalancer.Core.csproj", "{C27C6DBA-7E06-4C74-911D-9B7CBDC2D4CB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebalancer.SqlServer", "Rebalancer.SqlServer\Rebalancer.SqlServer.csproj", "{FD0432BA-AADE-446B-9CE3-74C7BF9CEABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rebalancer.Redis", "Rebalancer.Redis\Rebalancer.Redis.csproj", "{4D2CC39A-587E-47E4-98EF-A3755C078505}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebalancer.ZooKeeper", "Rebalancer.ZooKeeper\Rebalancer.ZooKeeper.csproj", "{A4FB1C55-0DF6-4E7C-98C0-F37DAA2FDFE3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebalancer.ZooKeeper.Tests", "Rebalancer.ZooKeeper.Tests\Rebalancer.ZooKeeper.Tests.csproj", "{D74635E9-8C8D-41BB-B7AE-59772500E322}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +19,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{74B2FC5B-3217-4932-8129-D532162640C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74B2FC5B-3217-4932-8129-D532162640C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74B2FC5B-3217-4932-8129-D532162640C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74B2FC5B-3217-4932-8129-D532162640C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C27C6DBA-7E06-4C74-911D-9B7CBDC2D4CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C27C6DBA-7E06-4C74-911D-9B7CBDC2D4CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C27C6DBA-7E06-4C74-911D-9B7CBDC2D4CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C27C6DBA-7E06-4C74-911D-9B7CBDC2D4CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD0432BA-AADE-446B-9CE3-74C7BF9CEABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD0432BA-AADE-446B-9CE3-74C7BF9CEABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD0432BA-AADE-446B-9CE3-74C7BF9CEABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD0432BA-AADE-446B-9CE3-74C7BF9CEABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D2CC39A-587E-47E4-98EF-A3755C078505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D2CC39A-587E-47E4-98EF-A3755C078505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D2CC39A-587E-47E4-98EF-A3755C078505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D2CC39A-587E-47E4-98EF-A3755C078505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4FB1C55-0DF6-4E7C-98C0-F37DAA2FDFE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4FB1C55-0DF6-4E7C-98C0-F37DAA2FDFE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4FB1C55-0DF6-4E7C-98C0-F37DAA2FDFE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4FB1C55-0DF6-4E7C-98C0-F37DAA2FDFE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D74635E9-8C8D-41BB-B7AE-59772500E322}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D74635E9-8C8D-41BB-B7AE-59772500E322}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D74635E9-8C8D-41BB-B7AE-59772500E322}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D74635E9-8C8D-41BB-B7AE-59772500E322}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
