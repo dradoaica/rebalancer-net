@@ -1,4 +1,4 @@
-#  Rebalanser
+#  Rebalancer
 
 Create Kafka style consumer groups in other technologies. Rebalanser was born of the need for consumer groups with RabbitMQ. But Rebalanser is completely technology agnostic and will balance activity over any group of resources across a group of participating nodes.
 
