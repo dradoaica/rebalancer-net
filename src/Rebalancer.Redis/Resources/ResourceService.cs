@@ -1,13 +1,12 @@
-﻿using StackExchange.Redis;
-using System;
+﻿using Rebalancer.Redis.Utils;
+using StackExchange.Redis;
+using StackExchange.Redis.DataTypes.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Rebalancer.Redis.Resources
 {
-    /// <summary>
-    /// TODO: implement using redis
-    /// </summary>
     internal class ResourceService : IResourceService
     {
         private readonly IDatabase cache;
@@ -19,7 +18,9 @@ namespace Rebalancer.Redis.Resources
 
         public Task<List<string>> GetResourcesAsync(string resourceGroup)
         {
-            throw new NotImplementedException();
+            string cacheKey = $"{Constants.SCHEMA}:Resources";
+            RedisList<Resource> redisList = new RedisList<Resource>(cache, cacheKey);
+            return Task.FromResult(redisList.Where(x => x.ResourceGroup == resourceGroup).Select(x => x.ResourceName).ToList());
         }
     }
 }
