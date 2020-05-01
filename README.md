@@ -52,8 +52,6 @@ With an RDBMS we use the global barrier algorithm where:
 
 3. The final step is that the Coordinator notifies each Follower of the resources it has been assigned and can start its activity (consuming, reading, writing etc).
 
-With ZooKeeper we can use a faster algorithm as is documented in the rebalanser-net-zookeeper [readme](https://github.com/Rebalanser/rebalanser-net-zookeeper)
-
 Other backends are suited to either. With Apache ZooKeeper we can use the faster Resource Barrier algorithm as is documented in the rebalanser-net-zookeeper [readme](https://github.com/Rebalanser/rebalanser-net-zookeeper).
 
 Leader election determines who the Coordinator is. If the Coordinator dies, then a Follower takes its place. Leader election and meta-data storage is performed via a consensus service (ZooKeeper, Etcd, Consul) or an RDBMS with serializable transaction support (SQL Server, Oracle, PostgreSQL). All communication between nodes is also performed via this backing meta-data store.
