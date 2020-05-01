@@ -14,11 +14,11 @@ Create Kafka style consumer groups in other technologies. Rebalanser was born of
 
 ###  Balancing assignment of multiple resources over multiples nodes
 
-![]([https://raw.githubusercontent.com/dradoaica/rebalancer-net-mssql/master/wiki/images/RebalancerMultipleNodesMultipleResources.png])
+![](https://raw.githubusercontent.com/dradoaica/rebalancer-net-mssql/master/wiki/images/RebalancerMultipleNodesMultipleResources.png)
 
 ###  Consuming from a single resource with backup nodes in case of failure
 
-![]([https://raw.githubusercontent.com/dradoaica/rebalancer-net-mssql/master/wiki/images/RebalancerBackupNodes.png])
+![](https://raw.githubusercontent.com/dradoaica/rebalancer-net-mssql/master/wiki/images/RebalancerBackupNodes.png)
 
 ##  Concepts
 
