@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StackExchange.Redis;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,6 +10,13 @@ namespace Rebalancer.Redis.Clients
     /// </summary>
     internal class ClientService : IClientService
     {
+        private readonly IDatabase cache;
+
+        public ClientService(IDatabase cache)
+        {
+            this.cache = cache;
+        }
+
         public Task CreateClientAsync(string resourceGroup, Guid clientId)
         {
             throw new NotImplementedException();
