@@ -1,6 +1,6 @@
 #  Rebalancer
 
-Create Kafka style consumer groups in other technologies. Rebalanser was born of the need for consumer groups with RabbitMQ. But Rebalanser is completely technology agnostic and will balance activity over any group of resources across a group of participating nodes.
+Create Kafka style consumer groups in other technologies. Rebalancer was born of the need for consumer groups with RabbitMQ. But Rebalancer is completely technology agnostic and will balance activity over any group of resources across a group of participating nodes.
 
 ##  Use cases
 
@@ -22,7 +22,7 @@ Create Kafka style consumer groups in other technologies. Rebalanser was born of
 
 ##  Concepts
 
-Rebalanser consists of (or will consist of when complete):
+Rebalancer consists of (or will consist of when complete):
 
 - a set of protocols for different resource allocation algorithms
 
@@ -52,10 +52,10 @@ With an RDBMS we use the global barrier algorithm where:
 
 3. The final step is that the Coordinator notifies each Follower of the resources it has been assigned and can start its activity (consuming, reading, writing etc).
 
-Other backends are suited to either. With Apache ZooKeeper we can use the faster Resource Barrier algorithm as is documented in the rebalanser-net-zookeeper [readme](https://github.com/Rebalanser/rebalanser-net-zookeeper).
+Other backends are suited to either.
 
 Leader election determines who the Coordinator is. If the Coordinator dies, then a Follower takes its place. Leader election and meta-data storage is performed via a consensus service (ZooKeeper, Etcd, Consul) or an RDBMS with serializable transaction support (SQL Server, Oracle, PostgreSQL). All communication between nodes is also performed via this backing meta-data store.
 
 ##  Languages and Backends
 
-Rebalanser is a suite of code libraries. It must be implemented in your language in order to use it. Also, different backends will be available.
+Rebalancer is a suite of code libraries. It must be implemented in your language in order to use it. Also, different backends will be available.
