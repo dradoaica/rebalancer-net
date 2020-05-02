@@ -64,7 +64,7 @@ namespace Rebalancer.Redis
 
             if (leaseService == null)
             {
-                this.leaseService = new LeaseService(cache, this.logger);
+                this.leaseService = new LeaseService(cache);
             }
             else
             {
