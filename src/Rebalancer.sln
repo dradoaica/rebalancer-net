@@ -3,15 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rebalancer.Core", "Rebalancer.Core\Rebalancer.Core.csproj", "{C27C6DBA-7E06-4C74-911D-9B7CBDC2D4CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebalancer.Core", "Rebalancer.Core\Rebalancer.Core.csproj", "{C27C6DBA-7E06-4C74-911D-9B7CBDC2D4CB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebalancer.SqlServer", "Rebalancer.SqlServer\Rebalancer.SqlServer.csproj", "{FD0432BA-AADE-446B-9CE3-74C7BF9CEABC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rebalancer.Redis", "Rebalancer.Redis\Rebalancer.Redis.csproj", "{4D2CC39A-587E-47E4-98EF-A3755C078505}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebalancer.Redis", "Rebalancer.Redis\Rebalancer.Redis.csproj", "{4D2CC39A-587E-47E4-98EF-A3755C078505}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebalancer.ZooKeeper", "Rebalancer.ZooKeeper\Rebalancer.ZooKeeper.csproj", "{A4FB1C55-0DF6-4E7C-98C0-F37DAA2FDFE3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebalancer.ZooKeeper.Tests", "Rebalancer.ZooKeeper.Tests\Rebalancer.ZooKeeper.Tests.csproj", "{D74635E9-8C8D-41BB-B7AE-59772500E322}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{12A8C18F-3D28-423F-A838-68B2EAFFD178}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{6585E27B-D1D6-4F50-9E3E-CCE0033C7E51}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebalanser.RabbitMQTools", "Rebalanser.RabbitMQTools\Rebalanser.RabbitMQTools.csproj", "{BC56C8F8-F8DE-4529-812B-EE975FFD9CF7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebalanser.RabbitMq.ExampleWithSqlServerBackend", "Rebalanser.ExampleConsoleApp\Rebalanser.RabbitMq.ExampleWithSqlServerBackend.csproj", "{6F1BF0B8-88F3-4413-B679-02A89BE84957}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +47,22 @@ Global
 		{D74635E9-8C8D-41BB-B7AE-59772500E322}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D74635E9-8C8D-41BB-B7AE-59772500E322}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D74635E9-8C8D-41BB-B7AE-59772500E322}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC56C8F8-F8DE-4529-812B-EE975FFD9CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC56C8F8-F8DE-4529-812B-EE975FFD9CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC56C8F8-F8DE-4529-812B-EE975FFD9CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC56C8F8-F8DE-4529-812B-EE975FFD9CF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F1BF0B8-88F3-4413-B679-02A89BE84957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F1BF0B8-88F3-4413-B679-02A89BE84957}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F1BF0B8-88F3-4413-B679-02A89BE84957}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F1BF0B8-88F3-4413-B679-02A89BE84957}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D74635E9-8C8D-41BB-B7AE-59772500E322} = {12A8C18F-3D28-423F-A838-68B2EAFFD178}
+		{BC56C8F8-F8DE-4529-812B-EE975FFD9CF7} = {6585E27B-D1D6-4F50-9E3E-CCE0033C7E51}
+		{6F1BF0B8-88F3-4413-B679-02A89BE84957} = {6585E27B-D1D6-4F50-9E3E-CCE0033C7E51}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA75D472-2C99-4176-B13C-7471E3704272}
