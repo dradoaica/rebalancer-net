@@ -8,7 +8,7 @@ Create Kafka style consumer groups in other technologies. Rebalancer was born of
 
 - Consume a group of resources such as file shares, FTPs, S3 buckets between the instances of a scaled out application.
 
-- Single Active Consumer / Active-Backup
+- Single Active-Consumer / Active-Backup
 
 - Create an application cluster that consumes a single resource in a highly available manner. The cluster leader (Coordinator) consumes the single resource and the slaves (Followers) remain idle in backup in case the leader dies.
 
