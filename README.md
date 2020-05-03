@@ -54,7 +54,7 @@ With an RDBMS we use the global barrier algorithm where:
 
 Other backends are suited to either.
 
-Leader election determines who the Coordinator is. If the Coordinator dies, then a Follower takes its place. Leader election and meta-data storage is performed via a consensus service (ZooKeeper, Etcd, Consul) or an RDBMS with serializable transaction support (SQL Server, Oracle, PostgreSQL). All communication between nodes is also performed via this backing meta-data store.
+Leader election determines who the Coordinator is. If the Coordinator dies, then a Follower takes its place. Leader election and meta-data storage is performed via a consensus service (ZooKeeper, Etcd, Consul, Redis) or an RDBMS with serializable transaction support (SQL Server, Oracle, PostgreSQL). All communication between nodes is also performed via this backing meta-data store.
 
 ##  Languages and Backends
 
