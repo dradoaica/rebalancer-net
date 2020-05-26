@@ -176,11 +176,11 @@ namespace Rebalancer.Redis
                             await roleTask;
                         }
 
-                        clientService.SetClientStatusAsync(clientId, ClientStatus.Terminated);
+                        await clientService.SetClientStatusAsync(clientId, ClientStatus.Terminated);
 
                         if (isCoordinator)
                         {
-                            leaseService.RelinquishLeaseAsync(new RelinquishLeaseRequest()
+                            await leaseService.RelinquishLeaseAsync(new RelinquishLeaseRequest()
                             {
                                 ClientId = clientId,
                                 FencingToken = coordinator.GetCurrentFencingToken(),
