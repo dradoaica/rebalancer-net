@@ -29,8 +29,10 @@ namespace Rebalancer.Redis.Clients
                     {
                         ClientId = clientId,
                         ResourceGroup = resourceGroup,
+                        LastKeepAlive = DateTime.UtcNow,
                         ClientStatus = ClientStatus.Waiting,
-                        CoordinatorStatus = CoordinatorStatus.StopActivity
+                        CoordinatorStatus = CoordinatorStatus.StopActivity,
+                        FencingToken = 1
                     }
                 }
             };
