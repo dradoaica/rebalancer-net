@@ -38,7 +38,7 @@ namespace Rebalancer.Redis.Leases
                     });
                 }
 
-                if (resourceGroup.CoordinatorId != Guid.Empty)
+                if (resourceGroup.LockedByClientId != renewLeaseRequest.ClientId && (DateTime.UtcNow - resourceGroup.LastCoordinatorRenewal).TotalSeconds <= resourceGroup.LeaseExpirySeconds)
                 {
                     return Task.FromResult(new LeaseResponse()
                     {
@@ -114,16 +114,11 @@ namespace Rebalancer.Redis.Leases
                 {
                     return Task.FromResult(new LeaseResponse()
                     {
-                        Result = LeaseResult.NoLease,
-                        Lease = new Lease()
-                        {
-                            ExpiryPeriod = TimeSpan.FromMinutes(1),
-                            HeartbeatPeriod = TimeSpan.FromSeconds(25)
-                        }
+                        Result = LeaseResult.NoLease
                     });
                 }
 
-                if (resourceGroup.CoordinatorId != Guid.Empty)
+                if (resourceGroup.LockedByClientId != renewLeaseRequest.ClientId && (DateTime.UtcNow - resourceGroup.LastCoordinatorRenewal).TotalSeconds <= resourceGroup.LeaseExpirySeconds)
                 {
                     return Task.FromResult(new LeaseResponse()
                     {
