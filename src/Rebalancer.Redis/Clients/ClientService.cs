@@ -1,4 +1,4 @@
-﻿using Rebalancer.Core;
+using Rebalancer.Core;
 using Rebalancer.Redis.Utils;
 using StackExchange.Redis;
 using StackExchange.Redis.DataTypes.Collections;
@@ -52,13 +52,14 @@ namespace Rebalancer.Redis.Clients
         {
             string cacheKey = $"{Constants.SCHEMA}:Clients";
             RedisDictionary<Guid, Client> redisDictionary = new RedisDictionary<Guid, Client>(cache, cacheKey);
-            Client client = redisDictionary[clientId];
-            if (client == null)
+            Client client;
+            if (!redisDictionary.ContainsKey(clientId))
             {
                 throw new RebalancerException($"No client exists with id {clientId}");
             }
             else
             {
+                client = redisDictionary[clientId];
                 client.LastKeepAlive = DateTime.UtcNow;
                 redisDictionary[client.ClientId] = client;
             }
@@ -69,10 +70,10 @@ namespace Rebalancer.Redis.Clients
         public Task SetClientStatusAsync(Guid clientId, ClientStatus clientStatus)
         {
             string cacheKey = $"{Constants.SCHEMA}:Clients";
-            RedisDictionary<Guid, Client> redisDictionary = new RedisDictionary<Guid, Client>(cache, cacheKey);
-            Client client = redisDictionary[clientId];
-            if (client != null)
+            RedisDictionary<Guid, Client> redisDictionary = new RedisDictionary<Guid, Client>(cache, cacheKey);      
+            if (redisDictionary.ContainsKey(clientId))
             {
+                Client client = redisDictionary[clientId];
                 client.ClientStatus = clientStatus;
                 redisDictionary[client.ClientId] = client;
             }
@@ -109,13 +110,14 @@ namespace Rebalancer.Redis.Clients
             RedisDictionary<Guid, Client> redisDictionary = new RedisDictionary<Guid, Client>(cache, cacheKey);
             foreach (Client targetedClient in clients)
             {
-                Client client = redisDictionary[targetedClient.ClientId];
-                if (client == null)
+                Client client;
+                if (!redisDictionary.ContainsKey(targetedClient.ClientId))
                 {
                     Task.FromResult(ModifyClientResult.FencingTokenViolation);
                 }
                 else
                 {
+                    client = redisDictionary[targetedClient.ClientId];
                     client.CoordinatorStatus = CoordinatorStatus.StopActivity;
                     client.FencingToken = fencingToken;
                     client.AssignedResources = new List<string>();
