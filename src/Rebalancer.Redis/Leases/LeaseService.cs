@@ -1,4 +1,4 @@
-﻿using Rebalancer.Redis.Utils;
+using Rebalancer.Redis.Utils;
 using StackExchange.Redis;
 using StackExchange.Redis.DataTypes.Collections;
 using System;
@@ -23,9 +23,8 @@ namespace Rebalancer.Redis.Leases
             try
             {
                 string cacheKey = $"{Constants.SCHEMA}:ResourceGroups";
-                redisDictionary = new RedisDictionary<string, ResourceGroup>(cache, cacheKey);
-                resourceGroup = redisDictionary[acquireLeaseRequest.ResourceGroup];
-                if (resourceGroup == null)
+                redisDictionary = new RedisDictionary<string, ResourceGroup>(cache, cacheKey);        
+                if (!redisDictionary.ContainsKey(acquireLeaseRequest.ResourceGroup))
                 {
                     return Task.FromResult(new LeaseResponse()
                     {
@@ -38,7 +37,8 @@ namespace Rebalancer.Redis.Leases
                     });
                 }
 
-                if (resourceGroup.LockedByClientId != renewLeaseRequest.ClientId && (DateTime.UtcNow - resourceGroup.LastCoordinatorRenewal).TotalSeconds <= resourceGroup.LeaseExpirySeconds)
+                resourceGroup = redisDictionary[acquireLeaseRequest.ResourceGroup];
+                if (resourceGroup.LockedByClientId != acquireLeaseRequest.ClientId && (DateTime.UtcNow - resourceGroup.LastCoordinatorRenewal).TotalSeconds <= resourceGroup.LeaseExpirySeconds)
                 {
                     return Task.FromResult(new LeaseResponse()
                     {
@@ -108,9 +108,8 @@ namespace Rebalancer.Redis.Leases
             try
             {
                 string cacheKey = $"{Constants.SCHEMA}:ResourceGroups";
-                redisDictionary = new RedisDictionary<string, ResourceGroup>(cache, cacheKey);
-                resourceGroup = redisDictionary[renewLeaseRequest.ResourceGroup];
-                if (resourceGroup == null)
+                redisDictionary = new RedisDictionary<string, ResourceGroup>(cache, cacheKey);           
+                if (!redisDictionary.ContainsKey(renewLeaseRequest.ResourceGroup))
                 {
                     return Task.FromResult(new LeaseResponse()
                     {
@@ -118,6 +117,7 @@ namespace Rebalancer.Redis.Leases
                     });
                 }
 
+                resourceGroup = redisDictionary[renewLeaseRequest.ResourceGroup];
                 if (resourceGroup.LockedByClientId != renewLeaseRequest.ClientId && (DateTime.UtcNow - resourceGroup.LastCoordinatorRenewal).TotalSeconds <= resourceGroup.LeaseExpirySeconds)
                 {
                     return Task.FromResult(new LeaseResponse()
