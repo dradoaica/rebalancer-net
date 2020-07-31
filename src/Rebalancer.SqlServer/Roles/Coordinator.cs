@@ -127,7 +127,7 @@ namespace Rebalancer.SqlServer.Roles
             List<Client> clientsNow = null;
             while (!allClientsWaiting && !token.IsCancellationRequested)
             {
-                WaitFor(TimeSpan.FromSeconds(5), token);
+                await WaitFor(TimeSpan.FromSeconds(5), token);
                 clientsNow = await GetLiveClientsAsync(clientEvent, coordinatorClientId);
 
                 if (!clientsNow.Any())
