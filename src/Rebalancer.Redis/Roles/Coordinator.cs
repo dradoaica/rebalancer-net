@@ -67,6 +67,7 @@ namespace Rebalancer.Redis.Roles
             if (self.ClientStatus == ClientStatus.Terminated || stoppedDueToInternalErrorFlag)
             {
                 stoppedDueToInternalErrorFlag = false;
+                await clientService.SetClientStatusAsync(coordinatorClientId, ClientStatus.Waiting);
                 logger.Debug(coordinatorClientId.ToString(), "Status change: COORDINATOR was terminated due to an error");
                 await TriggerRebalancingAsync(coordinatorClientId, clientEvent, clientsNow, resourcesNow, onChangeActions, token);
             }
