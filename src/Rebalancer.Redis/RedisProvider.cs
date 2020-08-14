@@ -259,6 +259,7 @@ namespace Rebalancer.Redis
 
         private void InvokeOnStop(OnChangeActions onChangeActions)
         {
+            coordinator.SetStoppedDueToInternalErrorFlag();
             try
             {
                 foreach (Action onErrorAction in onChangeActions.OnStopActions)

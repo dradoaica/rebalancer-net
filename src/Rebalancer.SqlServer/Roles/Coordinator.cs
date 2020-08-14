@@ -21,6 +21,7 @@ namespace Rebalancer.SqlServer.Roles
         private List<string> resources;
         private List<Guid> clients;
         private int currentFencingToken;
+        private bool stoppedDueToInternalErrorFlag;
 
         public Coordinator(IRebalancerLogger logger,
             IResourceService resourceService,
@@ -38,6 +39,11 @@ namespace Rebalancer.SqlServer.Roles
         public int GetFencingToken()
         {
             return currentFencingToken;
+        }
+
+        public void SetStoppedDueToInternalErrorFlag()
+        {
+            stoppedDueToInternalErrorFlag = true;
         }
 
         public async Task ExecuteCoordinatorRoleAsync(Guid coordinatorClientId,
@@ -58,7 +64,12 @@ namespace Rebalancer.SqlServer.Roles
                 return;
             }
 
-            if (!resources.OrderBy(x => x).SequenceEqual(resourcesNow.OrderBy(x => x)))
+            if (self.ClientStatus == ClientStatus.Terminated || stoppedDueToInternalErrorFlag)
+            {
+                logger.Debug(coordinatorClientId.ToString(), "Status change: COORDINATOR was terminated due to an error");
+                await TriggerRebalancingAsync(coordinatorClientId, clientEvent, clientsNow, resourcesNow, onChangeActions, token);
+            }
+            else if (!resources.OrderBy(x => x).SequenceEqual(resourcesNow.OrderBy(x => x)))
             {
                 logger.Debug(coordinatorClientId.ToString(), $"Resource change: Old: {string.Join(",", resources.OrderBy(x => x))} New: {string.Join(",", resourcesNow.OrderBy(x => x))}");
                 await TriggerRebalancingAsync(coordinatorClientId, clientEvent, clientsNow, resourcesNow, onChangeActions, token);
